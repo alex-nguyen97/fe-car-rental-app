@@ -2,6 +2,7 @@ import { React, useState } from "react";
 import { Card, Button, Row, Col } from "react-bootstrap";
 import ToastNotification from "./toast-notification";
 import carList from "../data/cars.json";
+
 const CarCardList = () => {
     const [toast, setToast] = useState({
         message: "Product added to cart!",
@@ -23,7 +24,7 @@ const CarCardList = () => {
                                 <Card.Img
                                     variant="top"
                                     src={car.image_url}
-                                    style={{ height: "350px", objectFit: "cover", padding: "30px" }}
+                                    style={{ height: "350px", objectFit: "cover", padding: "0px" }}
                                 />
                                 <Card.Body className="p-2">
                                     <Card.Title style={{
@@ -31,6 +32,7 @@ const CarCardList = () => {
                                         overflow: 'hidden',
                                         textOverflow: 'ellipsis'
                                     }}>{car.vehicle_category}</Card.Title>
+                                    <Card.Text style={{ marginBottom: '5px' }}>Category Type: {car.category_type}</Card.Text>
                                     <Card.Text style={{ marginBottom: '5px' }}>Price: ${car.avg_rate}</Card.Text>
                                     <Button
                                         size="sm"

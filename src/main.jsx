@@ -1,4 +1,4 @@
-import { createRoot } from 'react-dom/client'
+import { createRoot } from 'react-dom/client';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Provider } from 'react-redux';
@@ -12,12 +12,18 @@ createRoot(document.getElementById('root')).render(
       <Helmet>
         <title>Online Grocery Store</title>
         <meta charSet="utf-8" />
-        <meta name="description" content="Shop fresh groceries online with Online Grocery Store. Fast delivery, best prices, and quality produce." />
-        <meta name="keywords" content="grocery, fresh food, delivery, fruits, vegetables, online store" />
+        <meta
+          name="description"
+          content="Shop fresh groceries online with Online Grocery Store. Fast delivery, best prices, and quality produce."
+        />
+        <meta
+          name="keywords"
+          content="grocery, fresh food, delivery, fruits, vegetables, online store"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Helmet>
       <App />
     </BrowserRouter>
-  </Provider >,
-)
+  </Provider>
+);

@@ -1,13 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
-};
+const initialState = {};
 
 const storeSlice = createSlice({
-    name: 'store',
-    initialState,
-    reducers: {}
+  name: 'store',
+  initialState,
+  reducers: {},
 });
 
-export const { } = storeSlice.actions;
+export const {} = storeSlice.actions;
 export default storeSlice.reducer;

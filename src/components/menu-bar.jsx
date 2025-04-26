@@ -32,10 +32,9 @@ const MenuBar = () => {
           <SearchBar />
           <div className="d-flex align-items-center">
             <Nav className="d-flex">
-              <Nav.Link href="/" active>
-                Shop
+              <Nav.Link href="/reservation" active>
+                Reservation
               </Nav.Link>
-              <Nav.Link href="/">Login</Nav.Link>
             </Nav>
             <PersonalAvatar />
           </div>

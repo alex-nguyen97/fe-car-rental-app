@@ -14,11 +14,7 @@ const AvatarDropdown = () => {
     <div className="d-flex align-items-center" style={{ paddingLeft: '12px' }}>
       {/* Avatar Image with dropdown toggle */}
       <Dropdown drop={'down'}>
-        <Dropdown.Toggle
-          variant="link"
-          id="dropdown-avatar"
-          className="p-0" // Remove any padding to keep it just the image
-        >
+        <Dropdown.Toggle variant="link" id="dropdown-avatar" className="p-0">
           <Image
             src={AvatarImage}
             roundedCircle

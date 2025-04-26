@@ -25,11 +25,3 @@ const ToastNotification = ({
 };
 
 export default ToastNotification;
-// Usage Example:
-// <ToastNotification
-//     message="This is a toast notification!"
-//     showToast={true}
-//     onClose={() => console.log("Toast closed")}
-//     delay={3000}
-//     position="top-end"
-// />

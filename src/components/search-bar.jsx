@@ -1,6 +1,10 @@
-import { useState } from 'react';
+import { React, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Form, InputGroup } from 'react-bootstrap';
+import Autocomplete from '@mui/material/Autocomplete';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import TextField from '@mui/material/TextField';
+import Select from '@mui/material/Select';
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -12,21 +16,38 @@ const SearchBar = () => {
     }
   };
 
+  const [carFilterOption, setCarFilterOption] = useState('none');
+
+  const handleChange = (event) => {
+    setCarFilterOption(event.target.value);
+  };
+
   return (
     <div className="d-flex justify-content-center" style={{ width: '100%' }}>
-      <InputGroup
-        style={{ width: '60%', borderRadius: '50px', overflow: 'hidden' }}
+      <Autocomplete
+        disablePortal
+        options={[]}
+        sx={{ width: 500 }}
+        renderInput={(params) => (
+          <TextField {...params} placeholder="What are you looking for?" />
+        )}
+      />
+      <Select
+        id="car-options"
+        value={carFilterOption}
+        sx={{ width: 100 }}
+        onChange={handleChange}
+        placeholder="Car Type"
+        style={{
+          marginLeft: '10px',
+          backgroundColor: 'white',
+        }}
       >
-        <Form.Control
-          type="text"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)} // Update search query on input change
-          placeholder="Search by product name..."
-          aria-label="Search"
-          style={{ borderRadius: '50px' }}
-          onKeyDown={handleKeyDown}
-        />
-      </InputGroup>
+        <MenuItem value={'none'}>None</MenuItem>
+        <MenuItem value={'name'}>Name</MenuItem>
+        <MenuItem value={'type'}>Type</MenuItem>
+        <MenuItem value={'brand'}>Brand</MenuItem>
+      </Select>
     </div>
   );
 };

@@ -2,13 +2,20 @@ import { React, useState } from 'react';
 import { Card, Button, Row, Col } from 'react-bootstrap';
 import ToastNotification from './toast-notification';
 import carList from '../data/cars.json';
+import { useNavigate } from 'react-router-dom';
 
 const CarCardList = () => {
+  const navigate = useNavigate();
   const [toast, setToast] = useState({
     message: 'Product added to cart!',
     showToast: false,
     background: 'success',
   });
+
+  const handleClickRentCar = (vinId) => {
+    navigate('/reservation/' + vinId);
+  };
+
   return (
     <div style={{ padding: '20px' }}>
       <div
@@ -16,15 +23,13 @@ const CarCardList = () => {
         style={{ marginBottom: '20px' }}
       >
         <div>
-          <div>
-            <h2 class="mb-4">Car rental Australia</h2>
-            <p>
-              Whether you’re traveling for business or pleasure, a car is the
-              most affordable mode of transport to get around Australia. Save
-              time and costs with low overheads, great options, quick
-              availability and easy booking management.
-            </p>
-          </div>
+          <h2>Car rental Australia</h2>
+          <p>
+            Whether you’re traveling for business or pleasure, a car is the most
+            affordable mode of transport to get around Australia. Save time and
+            costs with low overheads, great options, quick availability and easy
+            booking management.
+          </p>
         </div>
       </div>
       <Row xs={1} md={3} lg={3} className="g-3">
@@ -36,7 +41,7 @@ const CarCardList = () => {
               md={4}
             >
               <Card
-                key={'1'}
+                key={car.vin_id}
                 className="card-hover"
                 style={{ width: '100%', height: '450px', position: 'relative' }}
               >
@@ -55,7 +60,7 @@ const CarCardList = () => {
                       height: '100%',
                       width: '100%',
                       objectFit: 'cover',
-                      filter: 'brightness(50%)',
+                      filter: 'brightness(60%)',
                     }}
                   />
                 </div>
@@ -99,7 +104,7 @@ const CarCardList = () => {
                     </div>
                     <Button
                       size="sm"
-                      onClick={() => {}}
+                      onClick={() => handleClickRentCar(car.vin_id)}
                       style={{
                         borderRadius: '20px',
                         backgroundColor: 'orange',
@@ -110,7 +115,7 @@ const CarCardList = () => {
                         fontSize: '16px',
                       }}
                     >
-                      Select
+                      Rent Now
                     </Button>
                   </div>
                 </Card.Body>

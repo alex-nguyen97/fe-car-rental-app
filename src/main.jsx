@@ -10,15 +10,15 @@ createRoot(document.getElementById('root')).render(
   <Provider store={store}>
     <BrowserRouter>
       <Helmet>
-        <title>Online Grocery Store</title>
+        <title>Online Car Rental</title>
         <meta charSet="utf-8" />
         <meta
           name="description"
-          content="Shop fresh groceries online with Online Grocery Store. Fast delivery, best prices, and quality produce."
+          content="Rent cars quickly and easily with our user-friendly car rental app. Choose from a wide range of vehicles, enjoy flexible booking options, and get affordable rates—all at your fingertips."
         />
         <meta
           name="keywords"
-          content="grocery, fresh food, delivery, fruits, vegetables, online store"
+          content="car rental app, rent a car, vehicle booking, car hire service, affordable car rentals, car reservation app, online car rental, book a car, mobile car rental, car rental deals"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />

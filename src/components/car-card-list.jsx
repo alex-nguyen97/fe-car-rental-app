@@ -3,6 +3,14 @@ import { Card, Button, Row, Col } from 'react-bootstrap';
 import ToastNotification from './toast-notification';
 import carList from '../data/cars.json';
 import { useNavigate } from 'react-router-dom';
+import {
+  FaGasPump,
+  FaBolt,
+  FaSeedling,
+  FaPowerOff,
+  FaBurn,
+} from 'react-icons/fa';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 const CarCardList = () => {
   const navigate = useNavigate();
@@ -48,6 +56,81 @@ const CarCardList = () => {
                 <div
                   style={{
                     position: 'absolute',
+                    top: '10px',
+                    right: '10px',
+                    display: 'flex',
+                    gap: '5px',
+                    zIndex: 2,
+                  }}
+                >
+                  {car.is_hybrid === 1 && (
+                    <OverlayTrigger
+                      placement="top"
+                      overlay={
+                        <Tooltip id="tooltip-hybrid">
+                          This car is a Hybrid
+                        </Tooltip>
+                      }
+                    >
+                      <FaSeedling
+                        style={{ color: 'beige', fontSize: '20px' }}
+                      />
+                    </OverlayTrigger>
+                  )}
+                  {car.is_diesel === 1 && (
+                    <OverlayTrigger
+                      placement="top"
+                      overlay={
+                        <Tooltip id="tooltip-diesel">
+                          This car uses Diesel
+                        </Tooltip>
+                      }
+                    >
+                      <FaBurn style={{ color: 'beige', fontSize: '20px' }} />
+                    </OverlayTrigger>
+                  )}
+                  {car.is_petrol === 1 && (
+                    <OverlayTrigger
+                      placement="top"
+                      overlay={
+                        <Tooltip id="tooltip-petrol">
+                          This car uses Petrol
+                        </Tooltip>
+                      }
+                    >
+                      <FaGasPump style={{ color: 'beige', fontSize: '20px' }} />
+                    </OverlayTrigger>
+                  )}
+                  {car.is_electric === 1 && (
+                    <OverlayTrigger
+                      placement="top"
+                      overlay={
+                        <Tooltip id="tooltip-electric">
+                          This car is Electric
+                        </Tooltip>
+                      }
+                    >
+                      <FaBolt style={{ color: 'beige', fontSize: '20px' }} />
+                    </OverlayTrigger>
+                  )}
+                  {car.is_automatic === 1 && (
+                    <OverlayTrigger
+                      placement="top"
+                      overlay={
+                        <Tooltip id="tooltip-automatic">
+                          This car is Automatic
+                        </Tooltip>
+                      }
+                    >
+                      <FaPowerOff
+                        style={{ color: 'beige', fontSize: '20px' }}
+                      />
+                    </OverlayTrigger>
+                  )}
+                </div>
+                <div
+                  style={{
+                    position: 'absolute',
                     width: '100%',
                     height: '100%',
                     overflow: 'hidden',
@@ -67,13 +150,14 @@ const CarCardList = () => {
                 <Card.Body
                   className="p-2 d-flex flex-column justify-content-between"
                   style={{
-                    color: 'white',
                     position: 'relative',
                     textAlign: 'left',
+                    color: 'white',
                   }}
                 >
                   <Card.Title
                     style={{
+                      color: 'white',
                       whiteSpace: 'nowrap',
                       overflow: 'hidden',
                       textOverflow: 'ellipsis',
@@ -87,19 +171,26 @@ const CarCardList = () => {
                   >
                     <div>
                       <Card.Text style={{ marginBottom: '5px' }}>
-                        Brand: {car.brand}
-                      </Card.Text>
-                      <Card.Text style={{ marginBottom: '5px' }}>
-                        Model: {car.model}
-                      </Card.Text>
-                      <Card.Text style={{ marginBottom: '5px' }}>
-                        Car Type: {car.car_type}
-                      </Card.Text>
-                      <Card.Text style={{ marginBottom: '5px' }}>
-                        Category Type: {car.category_type}
+                        Brand: {car.brand} (Model: {car.model} - Type:{' '}
+                        {car.car_type})
                       </Card.Text>
                       <Card.Text style={{ marginBottom: '5px' }}>
                         Price: ${car.avg_rate} / day
+                      </Card.Text>
+                      <Card.Text
+                        style={{ marginBottom: '5px', color: '#d3d3d3' }}
+                      >
+                        Year of Manufacture: {car.year_of_manufacture}
+                      </Card.Text>
+                      <Card.Text
+                        style={{ marginBottom: '5px', color: '#d3d3d3' }}
+                      >
+                        Mileage : {car.mileage} km
+                      </Card.Text>
+                      <Card.Text
+                        style={{ marginBottom: '5px', color: '#d3d3d3' }}
+                      >
+                        {car.details}
                       </Card.Text>
                     </div>
                     <Button
@@ -111,8 +202,9 @@ const CarCardList = () => {
                         borderColor: 'orange',
                         alignSelf: 'end',
                         marginBottom: '10px',
-                        padding: '10px 50px',
+                        padding: '5px 30px',
                         fontSize: '16px',
+                        whiteSpace: 'nowrap',
                       }}
                     >
                       Rent Now

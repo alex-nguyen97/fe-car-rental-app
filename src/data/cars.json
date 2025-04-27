@@ -14,7 +14,8 @@
     "mileage": 32000,
     "brand": "Toyota",
     "model": "Corolla Hatch Hybrid",
-    "car_type": "Hatchback"
+    "car_type": "Hatchback",
+    "vin_id": "1HGCM82633A123456"
   },
   {
     "vehicle_category": "Mid Size Car Sedan Hybrid",
@@ -31,7 +32,8 @@
     "mileage": 28000,
     "brand": "Toyota",
     "model": "Corolla Sedan Hybrid",
-    "car_type": "Sedan"
+    "car_type": "Sedan",
+    "vin_id": "1HGCM82633A654321"
   },
   {
     "vehicle_category": "Full Size Car Automatic-Hybrid",
@@ -48,7 +50,8 @@
     "mileage": 45000,
     "brand": "Toyota",
     "model": "Camry Hybrid",
-    "car_type": "Sedan"
+    "car_type": "Sedan",
+    "vin_id": "1HGCM82633A789012"
   },
   {
     "vehicle_category": "Mid Size Cross SUV",
@@ -65,7 +68,8 @@
     "mileage": 15000,
     "brand": "Toyota",
     "model": "Corolla Cross",
-    "car_type": "SUV"
+    "car_type": "SUV",
+    "vin_id": "1HGCM82633A345678"
   },
   {
     "vehicle_category": "Full Size 7 Seater Hybrid",
@@ -82,7 +86,8 @@
     "mileage": 37000,
     "brand": "Toyota",
     "model": "Kluger Hybrid",
-    "car_type": "SUV"
+    "car_type": "SUV",
+    "vin_id": "1HGCM82633A901234"
   },
   {
     "vehicle_category": "Small Car Hybrid",
@@ -99,7 +104,8 @@
     "mileage": 42000,
     "brand": "Toyota",
     "model": "Yaris Hybrid",
-    "car_type": "Hatchback"
+    "car_type": "Hatchback",
+    "vin_id": "1HGCM82633A567890"
   },
   {
     "vehicle_category": "Small Car Automatic",
@@ -116,7 +122,8 @@
     "mileage": 18000,
     "brand": "Toyota",
     "model": "Yaris",
-    "car_type": "Hatchback"
+    "car_type": "Hatchback",
+    "vin_id": "1HGCM82633A234567"
   },
   {
     "vehicle_category": "Small Car Automatic-New",
@@ -133,7 +140,8 @@
     "mileage": 25000,
     "brand": "Toyota",
     "model": "Yaris (New)",
-    "car_type": "Hatchback"
+    "car_type": "Hatchback",
+    "vin_id": "1HGCM82633A890123"
   },
   {
     "vehicle_category": "Mid Size Car Hatch Hybrid",
@@ -150,7 +158,8 @@
     "mileage": 30000,
     "brand": "Toyota",
     "model": "Corolla Hatch Hybrid",
-    "car_type": "Hatchback"
+    "car_type": "Hatchback",
+    "vin_id": "1HGCM82633A456789"
   },
   {
     "vehicle_category": "Small Car Hybrid",
@@ -167,7 +176,8 @@
     "mileage": 40000,
     "brand": "Toyota",
     "model": "Yaris Hybrid",
-    "car_type": "Hatchback"
+    "car_type": "Hatchback",
+    "vin_id": "1HGCM82633A678901"
   },
   {
     "vehicle_category": "Mid Size Car Sedan Hybrid",
@@ -184,7 +194,8 @@
     "mileage": 32000,
     "brand": "Toyota",
     "model": "Corolla Sedan Hybrid",
-    "car_type": "Sedan"
+    "car_type": "Sedan",
+    "vin_id": "1HGCM82633A112233"
   },
   {
     "vehicle_category": "Full Size Car Automatic-Hybrid",
@@ -201,7 +212,8 @@
     "mileage": 28000,
     "brand": "Toyota",
     "model": "Camry Hybrid",
-    "car_type": "Sedan"
+    "car_type": "Sedan",
+    "vin_id": "1HGCM82633A223344"
   },
   {
     "vehicle_category": "Mid Size SUV",
@@ -218,7 +230,8 @@
     "mileage": 45000,
     "brand": "Mitsubishi",
     "model": "ASX",
-    "car_type": "SUV"
+    "car_type": "SUV",
+    "vin_id": "1HGCM82633A334455"
   },
   {
     "vehicle_category": "Mid Size Cross SUV",
@@ -235,7 +248,8 @@
     "mileage": 15000,
     "brand": "Toyota",
     "model": "Corolla Cross",
-    "car_type": "SUV"
+    "car_type": "SUV",
+    "vin_id": "1HGCM82633A445566"
   },
   {
     "vehicle_category": "Mid Size 7 Seater SUV - NEW",
@@ -252,7 +266,8 @@
     "mileage": 37000,
     "brand": "Mitsubishi",
     "model": "Outlander",
-    "car_type": "SUV"
+    "car_type": "SUV",
+    "vin_id": "1HGCM82633A556677"
   },
   {
     "vehicle_category": "Full Size 7 Seater",
@@ -269,7 +284,8 @@
     "mileage": 42000,
     "brand": "Toyota",
     "model": "Kluger",
-    "car_type": "SUV"
+    "car_type": "SUV",
+    "vin_id": "1HGCM82633A667788"
   },
   {
     "vehicle_category": "Full Size 7 Seater Hybrid",
@@ -286,7 +302,8 @@
     "mileage": 18000,
     "brand": "Toyota",
     "model": "Kluger Hybrid",
-    "car_type": "SUV"
+    "car_type": "SUV",
+    "vin_id": "1HGCM82633A778899"
   },
   {
     "vehicle_category": "Eight Seater Automatic",
@@ -303,6 +320,97 @@
     "mileage": 25000,
     "brand": "Toyota",
     "model": "Granvia",
-    "car_type": "People Mover"
+    "car_type": "People Mover",
+    "vin_id": "1HGCM82633A889900"
+  },
+  {
+    "vehicle_category": "Auto Pantech Truck (Long)+Lift",
+    "avg_rate": "93.00",
+    "image_url": "https://www.oranacarandtruck.com.au/images/vehicles/AeiViapICS61ji3QVFI7FE0kkJUrD6xpdzaXWLIn.jpg",
+    "details": "Road trip in style with the stylish current model Mitsubishi Outlander. It alternates well as a mid-size SUV with very generous luggage space or a 7-seater with a back row that the kids will be fighting over.",
+    "is_hybrid": 0,
+    "is_diesel": 1,
+    "is_petrol": 0,
+    "is_electric": 0,
+    "is_automatic": 1,
+    "availability": 1,
+    "year_of_manufacture": 2022,
+    "mileage": 30000,
+    "brand": "Toyota",
+    "model": "Pantech Truck",
+    "car_type": "Truck",
+    "vin_id": "1HGCM82633A990011"
+  },
+  {
+    "vehicle_category": "Toyota Hiace 1T Van PETROL",
+    "avg_rate": "55.00",
+    "image_url": "https://www.oranacarandtruck.com.au/images/vehicles/PY1AHSbwe5ELaSIeD8bYSdoJAJx7maLNYF8WPXXg.jpg",
+    "details": "Road trip in style with the stylish current model Mitsubishi ASX. Relax back into the ASX with integrated satellite navigation ensuring you are kept up-to-date with changing traffic conditions.",
+    "is_hybrid": 0,
+    "is_diesel": 0,
+    "is_petrol": 1,
+    "is_electric": 0,
+    "is_automatic": 1,
+    "availability": 2,
+    "year_of_manufacture": 2021,
+    "mileage": 40000,
+    "brand": "Toyota",
+    "model": "Hiace 1T Van",
+    "car_type": "Van",
+    "vin_id": "1HGCM82633A101112"
+  },
+  {
+    "vehicle_category": "Toyota Hiace 1T Van DIESEL",
+    "avg_rate": "55.00",
+    "image_url": "https://www.oranacarandtruck.com.au/images/vehicles/FKdLIyVum8TwdGiJDmPXqgW16UCofcYPFhjsBfJa.jpg",
+    "details": "The Mitsubishi Outlander is a versatile SUV with generous luggage space or a 7-seater option, perfect for family trips.",
+    "is_hybrid": 0,
+    "is_diesel": 1,
+    "is_petrol": 0,
+    "is_electric": 0,
+    "is_automatic": 1,
+    "availability": 1,
+    "year_of_manufacture": 2023,
+    "mileage": 34000,
+    "brand": "Toyota",
+    "model": "Hiace 1T Van",
+    "car_type": "Van",
+    "vin_id": "1HGCM82633A202122"
+  },
+  {
+    "vehicle_category": "Toyota Hiace 1.5T Van-Diesel",
+    "avg_rate": "79.00",
+    "image_url": "https://www.oranacarandtruck.com.au/images/vehicles/W2SkmvdZPJido7kPoubojyiIZClK6FGUNGLzBXYg.jpg",
+    "details": "The Toyota RAV4 Hybrid offers a smooth ride with excellent fuel efficiency, ideal for both city and highway driving.",
+    "is_hybrid": 0,
+    "is_diesel": 1,
+    "is_petrol": 0,
+    "is_electric": 0,
+    "is_automatic": 1,
+    "availability": 2,
+    "year_of_manufacture": 2022,
+    "mileage": 27000,
+    "brand": "Toyota",
+    "model": "Hiace 1.5T Van",
+    "car_type": "Van",
+    "vin_id": "1HGCM82633A303233"
+  },
+  {
+    "vehicle_category": "Toyota Hilux Utility Auto",
+    "avg_rate": "52.00",
+    "image_url": "https://www.oranacarandtruck.com.au/images/vehicles/JB7Quuk1ajoyRflehEebqB2jXGbgLphiIIMG0wmH.jpg",
+    "details": "The Nissan X-Trail is a reliable SUV with spacious interiors and advanced safety features for a comfortable journey.",
+    "is_hybrid": 0,
+    "is_diesel": 0,
+    "is_petrol": 1,
+    "is_electric": 0,
+    "is_automatic": 1,
+    "availability": 1,
+    "year_of_manufacture": 2021,
+    "mileage": 39000,
+    "brand": "Toyota",
+    "model": "Hilux",
+    "car_type": "Utility Truck",
+    "vin_id": "1HGCM82633A404344"
   }
 ]

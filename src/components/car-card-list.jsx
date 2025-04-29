@@ -11,28 +11,13 @@ import {
   FaBurn,
 } from 'react-icons/fa';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
-import { setCarList, setSelectedCar } from '../storeSlice';
-import { fetchCarsData } from '../utils/api';
+import { setSelectedCar } from '../storeSlice';
 
 const CarCardList = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const loadCars = async () => {
-    try {
-      const cars = await fetchCarsData();
-      dispatch(setCarList(cars));
-    } catch (error) {
-      console.error('Failed to load cars:', error);
-    }
-  };
-
-  useEffect(() => {
-    loadCars();
-  }, []);
-
   const carList = useSelector((state) => {
-    console.log('Car list:', state.store.carList);
     return state.store.carList;
   });
 

@@ -3,6 +3,7 @@ import { Navbar, Nav, Container, Image } from 'react-bootstrap';
 import PersonalAvatar from './personal-avatar';
 import SearchBar from './search-bar';
 import Logo from '../assets/company-logo.avif';
+import { Link } from 'react-router-dom';
 
 const MenuBar = () => {
   return (
@@ -24,7 +25,8 @@ const MenuBar = () => {
             alt="Logo"
           />
           <Navbar.Brand
-            href="/"
+            as={Link}
+            to="/"
             style={{ fontSize: '20px', marginLeft: '10px' }}
           >
             Car rental
@@ -32,7 +34,7 @@ const MenuBar = () => {
           <SearchBar />
           <div className="d-flex align-items-center">
             <Nav className="d-flex">
-              <Nav.Link href="/reservation" active>
+              <Nav.Link as={Link} to="/reservation">
                 Reservation
               </Nav.Link>
             </Nav>

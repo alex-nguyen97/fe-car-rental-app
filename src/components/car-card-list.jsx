@@ -1,8 +1,8 @@
-import { React, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 import { Card, Button, Row, Col } from 'react-bootstrap';
 import ToastNotification from './toast-notification';
-import carList from '../data/cars.json';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   FaGasPump,
   FaBolt,
@@ -11,17 +11,45 @@ import {
   FaBurn,
 } from 'react-icons/fa';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { setCarList, setSelectedCar } from '../storeSlice';
+import { fetchCarsData } from '../utils/api';
 
 const CarCardList = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const loadCars = async () => {
+    try {
+      const cars = await fetchCarsData();
+      dispatch(setCarList(cars));
+    } catch (error) {
+      console.error('Failed to load cars:', error);
+    }
+  };
+
+  useEffect(() => {
+    loadCars();
+  }, []);
+
+  const carList = useSelector((state) => {
+    console.log('Car list:', state.store.carList);
+    return state.store.carList;
+  });
+
   const [toast, setToast] = useState({
-    message: 'Product added to cart!',
+    message: 'Car has been selected!',
     showToast: false,
     background: 'success',
   });
 
-  const handleClickRentCar = (vinId) => {
-    navigate('/reservation/' + vinId);
+  const handleClickRentCar = (car) => {
+    setToast({
+      ...toast,
+      showToast: true,
+    });
+    localStorage.setItem('selectedCar', JSON.stringify(car));
+    dispatch(setSelectedCar(car));
+    navigate('/reservation/' + car.vin_id);
   };
 
   return (
@@ -195,7 +223,7 @@ const CarCardList = () => {
                     </div>
                     <Button
                       size="sm"
-                      onClick={() => handleClickRentCar(car.vin_id)}
+                      onClick={() => handleClickRentCar(car)}
                       style={{
                         borderRadius: '20px',
                         backgroundColor: 'orange',

@@ -1,12 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {};
+const initialState = {
+  carList: [],
+  selectedCar: null,
+};
 
 const storeSlice = createSlice({
-  name: 'store',
+  name: 'carRental',
   initialState,
-  reducers: {},
+  reducers: {
+    setCarList: (state, action) => {
+      state.carList = action.payload;
+    },
+    setSelectedCar: (state, action) => {
+      state.selectedCar = action.payload;
+    },
+  },
 });
 
-export const {} = storeSlice.actions;
+export const { setSelectedCar, setCarList } = storeSlice.actions;
 export default storeSlice.reducer;

@@ -180,24 +180,6 @@
     "vin_id": "1HGCM82633A678901"
   },
   {
-    "vehicle_category": "Mid Size Car Sedan Hybrid",
-    "avg_rate": "54.50",
-    "image_url": "https://www.oranacarandtruck.com.au/images/vehicles/HzAiVodtVQvvGXkL09fmSzXVM75FPcEOr1JrLqKP.jpg",
-    "details": "Our Corolla Hatches are on sale. The world\u2019s most popular mid-size car, comfortably accommodates 5 passengers and some luggage.",
-    "is_hybrid": 1,
-    "is_diesel": 0,
-    "is_petrol": 0,
-    "is_electric": 0,
-    "is_automatic": 1,
-    "availability": 1,
-    "year_of_manufacture": 2021,
-    "mileage": 32000,
-    "brand": "Toyota",
-    "model": "Corolla Sedan Hybrid",
-    "car_type": "Sedan",
-    "vin_id": "1HGCM82633A112233"
-  },
-  {
     "vehicle_category": "Full Size Car Automatic-Hybrid",
     "avg_rate": "59.50",
     "image_url": "https://www.oranacarandtruck.com.au/images/vehicles/Camry Hybrid/Camry Hybrid - 01 - Angled - Floor-Wall.jpg",

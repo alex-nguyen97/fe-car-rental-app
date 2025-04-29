@@ -3,6 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   carList: [],
   selectedCar: null,
+  searchOption: null,
+  searchValue: null,
 };
 
 const storeSlice = createSlice({

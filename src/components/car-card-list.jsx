@@ -219,6 +219,7 @@ const CarCardList = () => {
                         fontSize: '16px',
                         whiteSpace: 'nowrap',
                       }}
+                      disabled={!car.availability}
                     >
                       Rent Now
                     </Button>

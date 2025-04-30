@@ -5,7 +5,7 @@ import HomePage from './pages/homepage';
 import Reservation from './pages/reservation';
 
 import { useDispatch } from 'react-redux';
-import { setCarList } from './storeSlice';
+import { setCarList, setCarOptions } from './storeSlice';
 import { fetchCarsData } from './utils/api';
 
 function App() {
@@ -14,6 +14,7 @@ function App() {
     try {
       const cars = await fetchCarsData();
       dispatch(setCarList(cars));
+      dispatch(setCarOptions(cars));
     } catch (error) {
       console.error('Failed to load cars:', error);
     }

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Define the path to the cars.json file
-const carsJsonPath = '/src/data/cars.json';
+const carsJsonPath = '/data/cars.json';
 
 // Create a function to fetch data from cars.json
 export const fetchCarsData = async () => {

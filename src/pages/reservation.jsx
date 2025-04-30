@@ -18,12 +18,10 @@ const ReservationContent = () => {
 
   // Check if vinId is matched with the selected car in local storage
   const selectedCar = useSelector((state) => {
-    console.log(state.store);
     return state.store.selectedCar;
   });
 
   const isAvailableCar = () => {
-    console.log(carList);
     const currentCar = carList.find((car) => {
       return car.vin_id === carVinId;
     });
@@ -53,7 +51,7 @@ const ReservationContent = () => {
         <Col>
           <RentalForm selectedCar={selectedCar} />
         </Col>
-        <SelectedCarDetails selectedCar={selectedCar} />
+        {selectedCar && <SelectedCarDetails selectedCar={selectedCar} />}
       </Row>
     </div>
   );

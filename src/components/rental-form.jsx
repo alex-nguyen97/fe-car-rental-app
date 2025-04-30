@@ -1,23 +1,41 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { useNavigate } from 'react-router-dom';
+import { setSelectedCar } from '../storeSlice';
+import { useDispatch } from 'react-redux';
 
 const RentalForm = ({ selectedCar }) => {
   // Formik setup
+
+  const [initialFormData, setInitialFormData] = React.useState({
+    name: '',
+    phone: '',
+    email: '',
+    license: '',
+    startDate: '',
+    rentalDays: '',
+  });
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const localFormData = localStorage.getItem('rentalForm');
+    if (localFormData) {
+      setInitialFormData(JSON.parse(localFormData));
+    }
+  }, []);
+
   const formik = useFormik({
-    initialValues: {
-      name: '',
-      phone: '',
-      email: '',
-      license: '',
-      startDate: '',
-      rentalDays: '',
-    },
+    initialValues: initialFormData,
+    enableReinitialize: true,
     validationSchema: Yup.object({
       name: Yup.string().required('Name is required'),
       phone: Yup.string()
-        .matches(/^\d{10,15}$/, 'Phone number must be 10-15 digits')
+        .matches(
+          /^(\+61|0)[2-478](\d{8})$/,
+          'Phone number must be a valid Australian phone number'
+        )
         .required('Phone is required'),
       email: Yup.string()
         .email('Invalid email address')
@@ -25,7 +43,9 @@ const RentalForm = ({ selectedCar }) => {
       license: Yup.string()
         .min(6, 'License must be at least 6 characters')
         .required('License is required'),
-      startDate: Yup.date().required('Start date is required'),
+      startDate: Yup.date()
+        .min(new Date(), 'Start date cannot be in the past')
+        .required('Start date is required'),
       rentalDays: Yup.number()
         .min(1, 'Rental days must be at least 1')
         .required('Rental days are required'),
@@ -35,6 +55,18 @@ const RentalForm = ({ selectedCar }) => {
       alert(`Total Price: $${selectedCar.avg_rate * values.rentalDays}`);
     },
   });
+
+  useEffect(() => {
+    localStorage.setItem('rentalForm', JSON.stringify(formik.values));
+  }, [formik.values]);
+
+  const navigate = useNavigate();
+  const handleClickCancel = () => {
+    localStorage.clear();
+    formik.resetForm();
+    dispatch(setSelectedCar(null)); // Clear selected car from Redux store
+    navigate('/'); // Redirect to the home page
+  };
 
   return (
     <Form onSubmit={formik.handleSubmit}>
@@ -104,6 +136,7 @@ const RentalForm = ({ selectedCar }) => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           isInvalid={formik.touched.startDate && !!formik.errors.startDate}
+          min={new Date().toISOString().split('T')[0]}
         />
         <Form.Control.Feedback type="invalid">
           {formik.errors.startDate}
@@ -129,13 +162,23 @@ const RentalForm = ({ selectedCar }) => {
           Total Price: ${selectedCar.avg_rate * formik.values.rentalDays}
         </Alert>
       )}
-      <Button type="submit" variant="primary">
+      <Button
+        type="submit"
+        variant="primary"
+        disabled={
+          !(
+            formik.isValid &&
+            Object.values(formik.values).every((value) => value !== '')
+          )
+        }
+      >
         Submit
-      </Button>{' '}
+      </Button>
       <Button
         variant="secondary"
-        onClick={() => formik.resetForm()}
+        onClick={() => handleClickCancel()}
         type="button"
+        style={{ marginLeft: '10px' }}
       >
         Cancel
       </Button>

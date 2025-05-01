@@ -4,8 +4,14 @@ import PersonalAvatar from './personal-avatar';
 import SearchBar from './search-bar';
 import Logo from '../assets/company-logo.avif';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const MenuBar = () => {
+  const navigate = useNavigate();
+
+  // get the current path
+  const currentPath = window.location.pathname;
+  const isReservationPage = currentPath.startsWith('/reservation/');
   return (
     <Navbar
       bg="light"
@@ -23,6 +29,10 @@ const MenuBar = () => {
             src={Logo}
             style={{ width: '50px', height: '50px', marginLeft: '10px' }}
             alt="Logo"
+            onClick={() => {
+              navigate('/');
+            }}
+            className="cursor-pointer"
           />
           <Navbar.Brand
             as={Link}
@@ -34,7 +44,7 @@ const MenuBar = () => {
           <SearchBar />
           <div className="d-flex align-items-center">
             <Nav className="d-flex">
-              <Nav.Link as={Link} to="/reservation">
+              <Nav.Link as={Link} to="/reservation" active={isReservationPage}>
                 Reservation
               </Nav.Link>
             </Nav>

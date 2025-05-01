@@ -6,22 +6,21 @@ import Reservation from './pages/reservation';
 
 import { useDispatch } from 'react-redux';
 import { setCarList, setCarOptions } from './storeSlice';
-import { fetchCarsData } from './utils/api';
+import api from './utils/api';
 
 function App() {
   const dispatch = useDispatch();
-  const loadCars = async () => {
-    try {
-      const cars = await fetchCarsData();
-      dispatch(setCarList(cars));
-      dispatch(setCarOptions(cars));
-    } catch (error) {
-      console.error('Failed to load cars:', error);
-    }
-  };
 
   useEffect(() => {
-    loadCars();
+    api
+      .get('/cars')
+      .then((response) => {
+        dispatch(setCarList(response.data.data));
+        dispatch(setCarOptions(response.data.data));
+      })
+      .catch((error) => {
+        console.error('Failed to load cars:', error);
+      });
   }, []);
 
   return (

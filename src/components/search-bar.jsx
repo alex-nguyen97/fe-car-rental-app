@@ -6,7 +6,6 @@ import TextField from '@mui/material/TextField';
 import Select from '@mui/material/Select';
 import { useSelector, useDispatch } from 'react-redux';
 import { setSearchFilter, setSearchValue } from '../storeSlice';
-import { fetchCarsData } from '../utils/api';
 
 const SearchBar = () => {
   const dispatch = useDispatch();

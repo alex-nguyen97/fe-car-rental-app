@@ -6,7 +6,9 @@ import { useNavigate } from 'react-router-dom';
 import { setSelectedCar, setCarList } from '../storeSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import ToastNotification from './toast-notification';
-const RentalForm = ({ selectedCar }) => {
+import supabase from '../utils/api';
+
+const RentalForm = ({ selectedCar, setRentalToast }) => {
   // Formik setup
 
   const [initialFormData, setInitialFormData] = React.useState({
@@ -29,6 +31,25 @@ const RentalForm = ({ selectedCar }) => {
   const carList = useSelector((state) => {
     return state.store.carList;
   });
+
+  const checkAvailableCars = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('cars')
+        .select()
+        .eq('vin_id', selectedCar.vin_id);
+      if (error) {
+        console.error('Error fetching cars:', error);
+        return false;
+      } else {
+        const updatedCar = data[0];
+        return updatedCar.availability;
+      }
+    } catch (err) {
+      console.error('Unexpected error:', err);
+      return false;
+    }
+  };
 
   const formik = useFormik({
     initialValues: initialFormData,
@@ -54,33 +75,47 @@ const RentalForm = ({ selectedCar }) => {
         .min(1, 'Rental days must be at least 1')
         .required('Rental days are required'),
     }),
-    onSubmit: (values) => {
-      setToast({
-        message:
-          'Rental form submitted successfully! Coming back to the home page...',
-        background: 'success',
-      });
-      const rentedCar = carList.find(
-        (car) => car.vin_id === selectedCar.vin_id
-      );
-      const updateCarList = carList.map((car) =>
-        car.vin_id === selectedCar.vin_id ? { ...car, availability: 0 } : car
-      );
-      dispatch(setCarList(updateCarList));
-      // updateCarInCarList(selectedCar.vin_id);
+    onSubmit: async (values) => {
+      const isCarAvailable = await checkAvailableCars();
+      if (isCarAvailable)
+        supabase
+          .from('cars')
+          .update({ availability: 0 })
+          .eq('vin_id', selectedCar.vin_id) // Match the car by vin_id
+          .then(({ data, error }) => {
+            if (error) {
+              setRentalToast({
+                show: true,
+                message: 'Error: ' + error.message,
+                background: 'danger',
+              });
+            } else {
+              setRentalToast({
+                show: true,
+                message:
+                  'Rental form submitted successfully! Coming back to the home page...',
+                background: 'success',
+              });
 
-      localStorage.removeItem('selectedCar');
-      dispatch(setSelectedCar(null));
+              const rentedCar = carList.find(
+                (car) => car.vin_id === selectedCar.vin_id
+              );
+              const updateCarList = carList.map((car) =>
+                car.vin_id === selectedCar.vin_id
+                  ? { ...car, availability: 0 }
+                  : car
+              );
+              dispatch(setCarList(updateCarList));
 
-      setTimeout(() => {
-        navigate('/');
-      }, 2000);
+              localStorage.removeItem('selectedCar');
+              dispatch(setSelectedCar(null));
+
+              setTimeout(() => {
+                navigate('/');
+              }, 2000);
+            }
+          });
     },
-  });
-
-  const [toast, setToast] = React.useState({
-    show: false,
-    message: '',
   });
 
   useEffect(() => {
@@ -90,7 +125,7 @@ const RentalForm = ({ selectedCar }) => {
   const navigate = useNavigate();
 
   const handleClickCancel = () => {
-    setToast({
+    setRentalToast({
       show: true,
       message: 'Data is cleared! Coming back to the home page...',
     });
@@ -226,20 +261,6 @@ const RentalForm = ({ selectedCar }) => {
           Cancel
         </Button>
       </Form>
-
-      <ToastNotification
-        message={toast.message}
-        showToast={toast.show}
-        delay={3000}
-        background="success"
-        position="bottom-end"
-        onClose={() =>
-          setToast({
-            ...toast,
-            show: false,
-          })
-        }
-      />
     </div>
   );
 };

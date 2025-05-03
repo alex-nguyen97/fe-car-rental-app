@@ -6,21 +6,29 @@ import Reservation from './pages/reservation';
 
 import { useDispatch } from 'react-redux';
 import { setCarList, setCarOptions } from './storeSlice';
-import api from './utils/api';
+import supabase from './utils/api';
 
 function App() {
   const dispatch = useDispatch();
+  const fetchCars = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('cars')
+        .select()
+        .order('vehicle_category', { ascending: true });
+      if (error) {
+        console.error('Error fetching cars:', error);
+      } else {
+        dispatch(setCarList(data));
+        dispatch(setCarOptions(data));
+      }
+    } catch (err) {
+      console.error('Unexpected error:', err);
+    }
+  };
 
   useEffect(() => {
-    api
-      .get('/cars')
-      .then((response) => {
-        dispatch(setCarList(response.data.data));
-        dispatch(setCarOptions(response.data.data));
-      })
-      .catch((error) => {
-        console.error('Failed to load cars:', error);
-      });
+    fetchCars();
   }, []);
 
   return (

@@ -1,7 +1,14 @@
 import React from 'react';
 import { Row, Col, Image, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
-const SelectedCarDetails = ({ selectedCar, onSelectAnotherCar }) => {
+const SelectedCarDetails = ({ selectedCar }) => {
+  const navigate = useNavigate();
+
+  const onSelectAnotherCar = () => {
+    navigate('/');
+  };
+
   return (
     <Col>
       <h5>Selected Car Details</h5>

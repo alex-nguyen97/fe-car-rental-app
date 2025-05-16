@@ -131,8 +131,8 @@ const RentalForm = ({ selectedCar, setRentalToast }) => {
     });
 
     // Clear data and reset form
-    localStorage.clear();
     formik.resetForm();
+    localStorage.clear();
     dispatch(setSelectedCar(null)); // Clear selected car from Redux store
 
     // Wait for 2 seconds before navigating
@@ -235,11 +235,13 @@ const RentalForm = ({ selectedCar, setRentalToast }) => {
             {formik.errors.rentalDays}
           </Form.Control.Feedback>
         </Form.Group>
-        {formik.values.rentalDays && !formik.errors.rentalDays && (
-          <Alert variant="success">
-            Total Price: ${selectedCar.avg_rate * formik.values.rentalDays}
-          </Alert>
-        )}
+        {formik.values.rentalDays &&
+          !formik.errors.rentalDays &&
+          selectedCar && (
+            <Alert variant="success">
+              Total Price: ${selectedCar.avg_rate * formik.values.rentalDays}
+            </Alert>
+          )}
         <Button
           type="submit"
           variant="primary"
